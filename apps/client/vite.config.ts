@@ -11,9 +11,11 @@ export default defineConfig({
     react(),
     tsconfigPaths(),
     sentryVitePlugin({
-      org: 'your-org',
-      project: 'your-project',
+      org: 'team-clustar',
+      project: 'clustar',
       authToken: process.env.SENTRY_AUTH_TOKEN,
+      disable: !process.env.SENTRY_AUTH_TOKEN,
     }),
   ],
+  build: { sourcemap: true },
 });
