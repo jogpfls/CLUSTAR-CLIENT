@@ -6,7 +6,7 @@ export default defineConfig({
   plugins: [react(), vanillaExtractPlugin()],
   build: {
     lib: {
-      entry: 'src/components/index.ts',
+      entry: 'src/index.ts',
       name: 'DesignSystem',
       fileName: (format) => `design-system.${format}.js`,
     },

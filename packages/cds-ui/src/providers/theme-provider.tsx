@@ -3,7 +3,7 @@ import { type ReactNode } from 'react';
 import '../styles/reset.css';
 import { themeClass } from '../styles/theme.css';
 
-export default function ThemeProvider({
+export function ThemeProvider({
   theme,
   className,
   children,
