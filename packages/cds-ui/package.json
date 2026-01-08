@@ -10,6 +10,9 @@
     "build": "vite build",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:run": "vitest run",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "chromatic": "dotenv -e ../../.env -- npx chromatic --project-token=$CHROMATIC_PROJECT_TOKEN"
