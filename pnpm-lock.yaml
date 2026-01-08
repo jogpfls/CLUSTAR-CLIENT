@@ -61,18 +61,6 @@ importers:
       '@commitlint/config-conventional':
         specifier: ^20.3.0
         version: 20.3.0
-      '@vanilla-extract/css':
-        specifier: catalog:vanilla-extract-core
-        version: 1.18.0
-      '@vanilla-extract/recipes':
-        specifier: catalog:vanilla-extract-core
-        version: 0.5.7(@vanilla-extract/css@1.18.0)
-      '@vanilla-extract/sprinkles':
-        specifier: catalog:vanilla-extract-utils
-        version: 1.6.5(@vanilla-extract/css@1.18.0)
-      '@vanilla-extract/vite-plugin':
-        specifier: catalog:vanilla-extract-utils
-        version: 5.1.4(@types/node@24.10.4)(jiti@2.6.1)(vite@7.3.0(@types/node@24.10.4)(jiti@2.6.1))
       dotenv-cli:
         specifier: ^11.0.0
         version: 11.0.0
