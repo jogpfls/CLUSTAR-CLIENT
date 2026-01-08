@@ -4,10 +4,7 @@
   "private": true,
   "type": "module",
   "exports": {
-    "./react-internal": {
-      "types": "./react-internal.d.ts",
-      "default": "./react-internal.js"
-    }
+    "./eslint.config": "./eslint.config.mjs"
   },
   "dependencies": {
     "@eslint/js": "^9.39.1",
