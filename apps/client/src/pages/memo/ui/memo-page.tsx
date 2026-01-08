@@ -1,5 +1,7 @@
+import { Icon } from '@cds/ui/icons'
+
 const MemoPage = () => {
-  return <div>memo-page</div>;
+  return <div><Icon name='ic_ai'/></div>;
 };
 
 export default MemoPage;
