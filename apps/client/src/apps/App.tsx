@@ -15,15 +15,6 @@ function App() {
     <GlobalErrorBoundary>
       <QueryClientProvider client={client}>
         <RouterProvider router={router} />
-        <div>
-          <button
-            onClick={() => {
-              throw new Error('This is your first error!');
-            }}
-          >
-            Break the world
-          </button>
-        </div>
         <ReactQueryDevtools initialIsOpen={false} />
       </QueryClientProvider>
     </GlobalErrorBoundary>
