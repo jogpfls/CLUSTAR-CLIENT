@@ -1,9 +1,9 @@
 import { style } from '@vanilla-extract/css';
 import { recipe } from '@vanilla-extract/recipes';
 
-import { themeVars } from '../../styles';
+import { themeVars } from '@cds/ui';
 
-import { fadeIn } from '../../styles/animations.css';
+import { fadeIn } from 'node_modules/@cds/ui/src/styles/animations.css';
 
 const smoothTransition = 'all 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
 
@@ -14,7 +14,7 @@ export const container = recipe({
     display: 'flex',
     flexDirection: 'column',
 
-    height: '100vh',
+    height: '100%',
 
     borderRadius: '16px',
     backgroundColor: themeVars.color.grey50,
@@ -136,6 +136,7 @@ export const floatingMenu = style({
   position: 'absolute',
   top: '45%',
   left: 'calc(100% + 1.4rem)',
+  zIndex: themeVars.zIndex.sidebar,
 
   marginLeft: '1.2rem',
 
@@ -216,6 +217,7 @@ export const floatingLabel = style({
   top: '50%',
   left: 'calc(100% + 1.4rem)',
   marginLeft: '1.2rem',
+  zIndex: themeVars.zIndex.button,
 
   transform: 'translateY(-17%)',
   opacity: 0,

@@ -2,14 +2,13 @@ import { useState } from 'react';
 
 import { Icon } from '@cds/icon';
 import { IconName } from '@cds/icon';
-
 import {
   FloatingLabel,
   FloatingMenu,
   SidebarIcon,
   SidebarPannel,
   SideBarProfile,
-} from '..';
+} from '@cds/ui';
 
 import * as styles from './sidebar.css';
 
@@ -30,22 +29,27 @@ const MENU_ITEMS = [
 ] as const;
 
 const LABEL_ITEMS = [
-  { id: 'sopt', label: 'sopt', icon: 'ic_label', activeIcon: 'ic_label_blue' },
-  {
-    id: 'home',
-    label: '집안일',
-    icon: 'ic_label',
-    activeIcon: 'ic_label_blue',
-  },
   {
     id: 'project',
-    label: '프로젝트',
+    label: '졸업 프로젝트',
     icon: 'ic_label',
     activeIcon: 'ic_label_blue',
   },
   {
-    id: 'school',
-    label: '학교',
+    id: 'general',
+    label: '교양',
+    icon: 'ic_label',
+    activeIcon: 'ic_label_blue',
+  },
+  {
+    id: 'sopt',
+    label: 'SOPT',
+    icon: 'ic_label',
+    activeIcon: 'ic_label_blue',
+  },
+  {
+    id: 'reference',
+    label: '레퍼런스',
     icon: 'ic_label',
     activeIcon: 'ic_label_blue',
   },
