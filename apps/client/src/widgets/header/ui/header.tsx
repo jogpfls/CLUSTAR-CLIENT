@@ -11,6 +11,8 @@ interface HeaderProps {
   handleChangeInput: (e: ChangeEvent<HTMLInputElement>) => void;
   viewMode?: string;
   handleValueChange?: (value: string) => void;
+  isAiMode?: boolean;
+  onSearchEnter?: () => void;
 }
 
 const Header = ({
@@ -20,17 +22,23 @@ const Header = ({
   handleChangeInput,
   viewMode,
   handleValueChange,
+  isAiMode = false,
+  onSearchEnter,
 }: HeaderProps) => {
   const isCard = viewMode === 'card';
   const isTree = viewMode === 'tree';
 
   return (
-    <header className={styles.container}>
-      {title && count !== undefined && (
+    <header className={styles.container({ isAiMode })}>
+      {!isAiMode && title && count !== undefined && (
         <PageTitle title={title} count={count} />
       )}
-      <Search inputValue={inputValue} handleChangeInput={handleChangeInput} />
-      {handleValueChange && viewMode && (
+      <Search
+        inputValue={inputValue}
+        handleChangeInput={handleChangeInput}
+        onEnter={onSearchEnter}
+      />
+      {!isAiMode && handleValueChange && viewMode && (
         <Toggle selectedValue={viewMode} handleValueChange={handleValueChange}>
           <Toggle.Item itemValue="card">
             <Icon

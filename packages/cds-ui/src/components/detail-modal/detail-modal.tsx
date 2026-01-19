@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 
 import { Icon } from '@cds/icon';
 
@@ -29,6 +30,10 @@ interface DetailModalProps {
   textContent: Omit<TextContentProps, 'mode'>;
   files?: FileProps[];
   selectedMemos?: SelectedMemoTypes[];
+  memoId?: string;
+  onAiCreateClick?: (memoId: string) => void;
+  open?: boolean;
+  onOpenChange?: (open: boolean) => void;
 }
 
 const DetailModal = ({
@@ -38,18 +43,29 @@ const DetailModal = ({
   textContent,
   files,
   selectedMemos,
+  memoId,
+  onAiCreateClick,
+  open,
+  onOpenChange,
 }: DetailModalProps) => {
   const { labelItems, dateText } = labelList;
   const { isAiResult, title, content } = textContent;
 
   const handleClick = () => {
-    // ai 메모 생성 클릭 시, 모달에 뜬 메모의 id에 대해 선택하고, 메모 페이지로 이동합니다. 이후 ai 프롬프트를 띄웁니다.
+    if (memoId && onAiCreateClick) {
+      onAiCreateClick(memoId);
+    }
   };
 
   return (
-    <Modal>
-      <Modal.Trigger>{children}</Modal.Trigger>
+    <Modal open={open} onOpenChange={onOpenChange}>
+      {open === undefined && <Modal.Trigger>{children}</Modal.Trigger>}
+      {open !== undefined && children}
       <Modal.Content>
+        <Dialog.Title className={styles.visuallyHidden}>{title}</Dialog.Title>
+        <Dialog.Description className={styles.visuallyHidden}>
+          {content}
+        </Dialog.Description>
         <div className={styles.container}>
           <div className={styles.headerContainer}>
             <div>
