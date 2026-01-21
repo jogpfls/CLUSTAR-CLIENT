@@ -5,8 +5,17 @@ import { createBrowserRouter } from 'react-router';
 
 import { NotFoundPage } from '@pages/not-found';
 
+import AuthGuard from './auth-guard';
 import { privateRoutes } from './routes/private-route';
 import { publicRoutes } from './routes/public-route';
+
+const PrivateLayoutWithGuard = () => {
+  return (
+    <AuthGuard>
+      <PrivateLayout />
+    </AuthGuard>
+  );
+};
 
 export const router = createBrowserRouter([
   {
@@ -17,7 +26,7 @@ export const router = createBrowserRouter([
         children: publicRoutes,
       },
       {
-        Component: PrivateLayout,
+        Component: PrivateLayoutWithGuard,
         children: privateRoutes,
       },
       {

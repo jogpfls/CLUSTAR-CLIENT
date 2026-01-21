@@ -1,10 +1,28 @@
+import { Navigate } from 'react-router';
+
 import { Icon } from '@cds/icon';
 
+import { PATH } from '@shared/router/path';
+import { getAccessToken } from '@shared/storage/token-storage';
+
 import LoginButton from '@features/login-button/ui/login-button';
+
+import { LOGIN_END_POINT } from '@widgets/login-page/api/end-point';
 
 import * as styles from './login-page.css';
 
 const LoginPage = () => {
+  const accessToken = getAccessToken();
+
+  if (accessToken) {
+    return <Navigate to={PATH.NEW_MEMO} replace />;
+  }
+
+  const handleGoogleLogin = () => {
+    const loginUrl = `${import.meta.env.VITE_API_BASE_URL}${LOGIN_END_POINT.LOGIN}`;
+    window.location.href = loginUrl;
+  };
+
   return (
     <>
       <div className={styles.header}>
@@ -29,7 +47,7 @@ const LoginPage = () => {
 
         <div className={styles.loginSection}>
           <p className={styles.login}>로그인/회원가입</p>
-          <LoginButton onClick={() => {}} />
+          <LoginButton onClick={handleGoogleLogin} />
           <p className={styles.loginDescription}>
             계속 진행하면 <a className={styles.point}>이용약관</a> 및
             <a className={styles.point}> 개인정보처리방침</a>
