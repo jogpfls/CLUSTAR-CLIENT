@@ -1,4 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+
+import { ConfirmModal } from '@cds/ui';
 
 import { useAiPrompt, UseAiPromptProps } from '@features/ai-prompt';
 import AiPromptHeader from '@features/ai-prompt/ui/prompt-header/prompt-header';
@@ -20,6 +22,8 @@ const AiPrompt = ({
   onLoadingChange,
   chatRoomId,
 }: AiPromptProps) => {
+  const [isSaveConfirmModalOpen, setIsSaveConfirmModalOpen] = useState(false);
+
   const {
     isOpen,
     messages,
@@ -45,6 +49,21 @@ const AiPrompt = ({
     }
   }, [isLoading, onLoadingChange]);
 
+  const handleSaveToMemoWithModal = async (messageId: string) => {
+    const success = await handleSaveToMemo(messageId);
+    if (success) {
+      setIsSaveConfirmModalOpen(true);
+    }
+  };
+
+  const handleSaveConfirmModalClose = () => {
+    setIsSaveConfirmModalOpen(false);
+  };
+
+  const handleSaveModalOpenChange = (open: boolean) => {
+    setIsSaveConfirmModalOpen(open);
+  };
+
   if (!isOpen) return null;
 
   return (
@@ -56,7 +75,7 @@ const AiPrompt = ({
         isLoading={isLoading}
         selectedMemosCount={selectedMemos.length}
         handleRegenerate={handleRegenerate}
-        handleSaveToMemo={handleSaveToMemo}
+        handleSaveToMemo={handleSaveToMemoWithModal}
       />
       <PromptInput
         value={inputText}
@@ -66,6 +85,12 @@ const AiPrompt = ({
         handleSubmit={handleSubmit}
         disabled={isLoading || selectedMemos.length === 0}
         selectedMemosCount={selectedMemos.length}
+      />
+      <ConfirmModal
+        open={isSaveConfirmModalOpen}
+        onOpenChange={handleSaveModalOpenChange}
+        onCloseClick={handleSaveConfirmModalClose}
+        isHavedCancel={false}
       />
     </div>
   );

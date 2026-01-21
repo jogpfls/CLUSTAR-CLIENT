@@ -239,9 +239,10 @@ export const useAiPrompt = ({
           content: message.text,
           sourceMemoIds,
         });
-        console.log('메모 저장 성공');
+        return true;
       } catch (error) {
         console.error('메모 저장 실패:', error);
+        return false;
       }
     },
     [messages, selectedMemos, saveAiMemoMutation],
