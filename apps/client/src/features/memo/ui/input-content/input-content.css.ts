@@ -32,6 +32,7 @@ globalStyle(`${Q} .ql-editor`, {
   ...themeVars.fontStyles.body_m_16,
   overflowWrap: 'anywhere',
   wordBreak: 'break-word',
+  lineHeight: '1.5em',
 });
 
 // typography reset (color는 건드리지 않기)
@@ -81,6 +82,7 @@ globalStyle(`${Q} .ql-editor.ql-blank::before`, {
   ...themeVars.fontStyles.body_m_16,
   fontStyle: 'normal',
   color: themeVars.color.grey500,
+  lineHeight: '1.5em',
 });
 
 globalStyle(`${Q} .ql-editor.ql-blank:focus::before`, {
