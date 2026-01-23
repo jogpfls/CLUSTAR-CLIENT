@@ -38,6 +38,8 @@ function PrivateLayoutContent() {
     isExpanded,
     toggleSidebar,
     sidebarLocked,
+    setIsTreeViewOpen,
+    isTreeViewOpen,
     isPromptOpen,
     setIsPromptOpen,
     setIsAiMode,
@@ -100,6 +102,8 @@ function PrivateLayoutContent() {
             onToggle={toggleSidebar}
             selectedId={selectedId}
             onSelect={handleSelect}
+            setIsTreeViewOpen={setIsTreeViewOpen}
+            isTreeViewOpen={isTreeViewOpen}
             onLogoClick={handleLogoClick}
           />
         </div>
