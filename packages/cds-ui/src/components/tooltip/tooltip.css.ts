@@ -1,15 +1,16 @@
 import { style } from '@vanilla-extract/css';
 
-import { themeVars } from '@cds/ui';
+import { themeVars } from '../../styles';
 
-export const popoverContainer = style({
+export const container = style({
   display: 'inline-flex',
   flexDirection: 'column',
-  width: 'max-content',
+  alignItems: 'flex-start',
   padding: '0.8rem 1.2rem',
-  backgroundColor: themeVars.color.grey700,
   border: `1px solid ${themeVars.color.grey200}`,
   borderRadius: '8px',
+  backgroundColor: themeVars.color.grey700,
+  boxShadow: '0 0 4px 0 rgba(0, 0, 0, 0.10)',
 });
 
 export const title = style({

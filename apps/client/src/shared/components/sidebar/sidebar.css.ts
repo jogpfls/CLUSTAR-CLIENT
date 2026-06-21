@@ -131,6 +131,17 @@ export const iconContainer = style({
   position: 'relative',
 });
 
+export const labelContainer = style({
+  position: 'relative',
+  width: '3.6rem',
+  height: '3.6rem',
+  borderRadius: '8px',
+
+  ':hover': {
+    backgroundColor: themeVars.color.grey200,
+  },
+});
+
 export const floatingMenu = style({
   visibility: 'hidden',
   position: 'absolute',
@@ -144,10 +155,11 @@ export const floatingMenu = style({
   opacity: 0,
 
   selectors: {
-    [`${iconContainer}:hover &, ${foldingBtn}:hover &`]: {
-      visibility: 'visible',
-      opacity: 1,
-    },
+    [`${iconContainer}:hover &, ${foldingBtn}:hover &, ${labelContainer}:hover &`]:
+      {
+        visibility: 'visible',
+        opacity: 1,
+      },
   },
 });
 
@@ -181,17 +193,6 @@ export const labelList = recipe({
   },
 });
 
-export const labelContainer = style({
-  position: 'relative',
-  width: '3.6rem',
-  height: '3.6rem',
-  borderRadius: '8px',
-
-  ':hover': {
-    backgroundColor: themeVars.color.grey200,
-  },
-});
-
 export const profileWrapper = style({
   animation: fadeInAnimation,
 });
@@ -207,36 +208,6 @@ export const sidebarBottom = recipe({
     expanded: {
       true: { gap: '3rem', animation: fadeInAnimation },
       false: { gap: '0.8rem' },
-    },
-  },
-});
-
-export const floatingLabel = style({
-  visibility: 'hidden',
-  position: 'absolute',
-  top: '50%',
-  left: 'calc(100% + 1.4rem)',
-  marginLeft: '1.2rem',
-  zIndex: themeVars.zIndex.button,
-
-  transform: 'translateY(-17%)',
-  opacity: 0,
-  transition: 'opacity 0.2s ease',
-
-  '::before': {
-    content: '""',
-    position: 'absolute',
-    top: 0,
-    bottom: 0,
-    left: '-2.5rem',
-    width: '2.5rem',
-    backgroundColor: 'transparent',
-  },
-
-  selectors: {
-    [`${labelContainer}:hover &`]: {
-      visibility: 'visible',
-      opacity: 1,
     },
   },
 });
